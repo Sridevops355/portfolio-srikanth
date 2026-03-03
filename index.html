@@ -163,7 +163,7 @@
       border-radius:100px; padding:5px 16px 5px 9px;
       font-size:.68rem; color:var(--green); letter-spacing:.04em;
       margin-bottom:24px; width:fit-content;
-      animation:fade-d .5s ease both;
+      
     }
     .sdot { width:7px; height:7px; border-radius:50%; background:var(--green); animation:blink 2.5s infinite; }
     @keyframes blink {
@@ -174,7 +174,7 @@
     /* Transition bar */
     .transition-bar {
       display:flex; align-items:center; gap:12px; margin-bottom:22px;
-      animation:fade-u .55s .2s ease both;
+      
     }
     .t-from { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text3); }
     .t-arrow { color:var(--green); font-size:1.1rem; }
@@ -184,7 +184,7 @@
     .hero-stats {
       display:flex; gap:36px; flex-wrap:wrap;
       margin-top:52px; padding-top:36px; border-top:1px solid var(--border);
-      animation:fade-u .6s .5s ease both;
+      
     }
     .hs-n { font-family:var(--display); font-size:2rem; font-weight:700; letter-spacing:-.04em; line-height:1; }
     .hs-n sup { font-size:.8rem; color:var(--green); }
@@ -195,7 +195,7 @@
       width:100%; aspect-ratio:5/6;
       background:var(--bg3); border:1px solid var(--border2); border-radius:var(--rl);
       position:relative; overflow:hidden; box-shadow:var(--sh2);
-      animation:fade-u .65s .25s ease both;
+      
     }
     .photo-card::before {
       content:''; position:absolute; inset:0;
@@ -494,7 +494,7 @@
             Open to Work · Sydney, AU
           </div>
 
-          <h1 class="h1" style="margin-bottom:20px;animation:fade-u .55s .1s ease both;">
+          <h1 class="h1" style="margin-bottom:20px;">
             Srikanth<br>
             <span style="font-style:italic;font-weight:300;">Nanna</span><span style="color:var(--green);">paneni</span>
           </h1>
@@ -505,13 +505,13 @@
             <span class="t-to">AWS · DevOps Engineer</span>
           </div>
 
-          <p style="color:var(--text2);font-size:.88rem;max-width:520px;line-height:1.85;margin-bottom:36px;animation:fade-u .55s .3s ease both;">
+          <p style="color:var(--text2);font-size:.88rem;max-width:520px;line-height:1.85;margin-bottom:36px;">
             Freelance QA & Automation Engineer with 3+ years of experience (incl. Testpoint™) in Selenium, Cypress, Playwright, and API testing.
             Now delivering freelance projects while building hands-on AWS & DevOps skills —
             bringing a <em style="font-style:normal;color:var(--green)">quality-first mindset</em> to cloud infrastructure.
           </p>
 
-          <div style="display:flex;gap:12px;flex-wrap:wrap;animation:fade-u .55s .4s ease both;">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
             <a href="#projects" class="btn btn-g">↓ View Projects</a>
             <a href="https://linkedin.com/in/srikanth-nannapaneni" target="_blank" rel="noopener" class="btn btn-o">LinkedIn ↗</a>
             <a href="#contact" class="btn btn-o">Get in Touch</a>
@@ -905,6 +905,10 @@
        ╚══════════════════════════════════╝ -->
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     'use strict';
+    // Safety net: force show all content after 1.5s in case animations stall
+    setTimeout(() => {
+      document.querySelectorAll('.reveal, .stagger, .stagger > *').forEach(el => el.classList.add('on'));
+    }, 300);
 
     /* ── Scroll Reveal ──────────────────────────── */
     const revealObs = new IntersectionObserver((entries) => {
